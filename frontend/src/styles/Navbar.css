@@ -1,4 +1,5 @@
 /* ============ Theme Variables for Navbar ============ */
+
 :root {
   --nav-bg: rgba(255, 255, 255, 0.78);
   --nav-border: rgba(227, 233, 240, 0.7);
@@ -6,12 +7,11 @@
   --nav-text-muted: var(--text-muted, #6b7280);
 }
 
-/* When dark mode is active, switch these colors! */
 [data-theme="dark"] {
-  --nav-bg: rgba(15, 23, 42, 0.85); /* Dark translucent navy */
+  --nav-bg: rgba(15, 23, 42, 0.85);
   --nav-border: rgba(255, 255, 255, 0.1);
-  --nav-text: #f8fafc; /* White text */
-  --nav-text-muted: #94a3b8; /* Light gray text */
+  --nav-text: #f8fafc;
+  --nav-text-muted: #94a3b8;
   --border-soft: #334155;
 }
 
@@ -21,11 +21,14 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--nav-bg); /* Now uses the dynamic variable */
+  background: var(--nav-bg);
   backdrop-filter: saturate(180%) blur(14px);
   -webkit-backdrop-filter: saturate(180%) blur(14px);
   border-bottom: 1px solid var(--nav-border);
-  transition: box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+  transition:
+    box-shadow 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .navbar:hover {
@@ -41,11 +44,16 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  box-sizing: border-box;
 }
+
+/* ============ Logo ============ */
 
 .logo {
   display: inline-flex;
   align-items: center;
+  flex: 0 0 auto;
+  min-width: 0;
   gap: 8px;
   font-family: "Plus Jakarta Sans", "Inter", sans-serif;
   font-size: 1.35rem;
@@ -53,21 +61,31 @@
   letter-spacing: -0.02em;
   color: var(--nav-text);
   text-decoration: none;
-  transition: transform 0.3s ease, filter 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
 }
 
 .logo-img {
-  height: 40px;
+  display: block;
   width: auto;
+  height: 40px;
+  max-width: 180px;
+  flex: 0 0 auto;
   object-fit: contain;
+  object-position: center;
 }
 
 .logo .logo-text {
-  background: var(--grad-primary, linear-gradient(90deg, #2563eb, #3b82f6));
+  background: var(
+    --grad-primary,
+    linear-gradient(90deg, #2563eb, #3b82f6)
+  );
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
+  white-space: nowrap;
 }
 
 .logo:hover {
@@ -75,10 +93,14 @@
   filter: drop-shadow(0 4px 10px rgba(14, 165, 164, 0.25));
 }
 
+/* ============ Navigation Links ============ */
+
 .nav-links {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 10px;
+  min-width: 0;
 }
 
 .nav-link {
@@ -90,7 +112,9 @@
   color: var(--nav-text-muted);
   border-radius: 8px;
   text-decoration: none;
-  transition: color 0.3s ease, background 0.3s ease;
+  transition:
+    color 0.3s ease,
+    background 0.3s ease;
 }
 
 .nav-link::after {
@@ -109,7 +133,7 @@
 
 .nav-link:hover {
   color: var(--nav-text);
-  background: rgba(37, 99, 235, 0.08); /* Replaced var(--brand-50) for safety */
+  background: rgba(37, 99, 235, 0.08);
 }
 
 .nav-link:hover::after {
@@ -126,14 +150,18 @@
 .theme-toggle-btn {
   background: transparent;
   border: 1.5px solid var(--border-soft, #cbd5e1);
-  color: var(--nav-text); /* Adopts the dynamic text color */
+  color: var(--nav-text);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
   padding: 8px;
   margin-left: 12px;
   border-radius: 50%;
+  box-sizing: border-box;
   transition: all 0.2s ease;
 }
 
@@ -147,9 +175,109 @@
   background-color: rgba(255, 255, 255, 0.1);
 }
 
+/* ============ Tablet ============ */
+
+@media (max-width: 900px) {
+  .navbar-container {
+    padding: 13px 20px;
+  }
+
+  .logo-img {
+    height: 38px;
+  }
+
+  .logo {
+    font-size: 1.25rem;
+  }
+
+  .nav-links {
+    gap: 6px;
+  }
+
+  .nav-link {
+    padding: 7px 10px;
+  }
+
+  .navbar .btn {
+    padding: 9px 14px;
+  }
+}
+
+/* ============ Mobile ============ */
+
 @media (max-width: 640px) {
-  .navbar-container { padding: 12px 16px; }
-  .logo { font-size: 1.15rem; }
-  .nav-link { padding: 6px 10px; font-size: 0.88rem; }
-  .navbar .btn { padding: 8px 14px; font-size: 0.85rem; }
+  .navbar-container {
+    padding: 12px 16px;
+    gap: 10px;
+  }
+
+  .logo {
+    gap: 6px;
+    font-size: 1.05rem;
+  }
+
+  .logo-img {
+    height: 34px;
+    max-width: 150px;
+  }
+
+  .nav-links {
+    gap: 4px;
+  }
+
+  .nav-link {
+    padding: 6px 8px;
+    font-size: 0.82rem;
+  }
+
+  .navbar .btn {
+    padding: 8px 11px;
+    font-size: 0.8rem;
+  }
+
+  .theme-toggle-btn {
+    width: 36px;
+    height: 36px;
+    padding: 6px;
+    margin-left: 6px;
+  }
+}
+
+/* ============ Very Small Screens ============ */
+
+@media (max-width: 420px) {
+  .navbar-container {
+    padding: 10px 12px;
+    gap: 6px;
+  }
+
+  .logo {
+    gap: 5px;
+    font-size: 0.95rem;
+  }
+
+  .logo-img {
+    height: 30px;
+    max-width: 120px;
+  }
+
+  .nav-links {
+    gap: 2px;
+  }
+
+  .nav-link {
+    padding: 5px 6px;
+    font-size: 0.75rem;
+  }
+
+  .navbar .btn {
+    padding: 7px 9px;
+    font-size: 0.74rem;
+  }
+
+  .theme-toggle-btn {
+    width: 34px;
+    height: 34px;
+    margin-left: 3px;
+  }
 }
