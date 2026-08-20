@@ -1,4 +1,4 @@
-/* ============ Dashboard â€” action cards grid ============ */
+/* ============ Dashboard — action cards grid ============ */
 
 .dashboard {
   width: 100%;
@@ -6,6 +6,7 @@
   margin: 0 auto;
   padding: 56px 24px 72px;
   animation: fadeIn 0.5s var(--ease);
+  box-sizing: border-box;
 }
 
 .dashboard-header {
@@ -19,35 +20,55 @@
   box-shadow: var(--shadow-lg);
   animation: fadeUp 0.5s var(--ease);
 }
+
 .dashboard-header::before {
   content: "";
-  position: absolute; inset: 0;
+  position: absolute;
+  inset: 0;
   background:
-    radial-gradient(600px 300px at 10% 20%, rgba(255,255,255,0.18), transparent 60%),
-    radial-gradient(600px 300px at 90% 80%, rgba(255,255,255,0.12), transparent 60%);
+    radial-gradient(
+      600px 300px at 10% 20%,
+      rgba(255, 255, 255, 0.18),
+      transparent 60%
+    ),
+    radial-gradient(
+      600px 300px at 90% 80%,
+      rgba(255, 255, 255, 0.12),
+      transparent 60%
+    );
   pointer-events: none;
 }
+
 .dashboard-header h2 {
   position: relative;
   color: #fff;
   font-size: clamp(1.6rem, 3vw, 2.1rem);
   margin: 0 0 6px;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
 }
+
 .dashboard-header p {
   position: relative;
   margin: 0;
-  color: rgba(255,255,255,0.92);
+  color: rgba(255, 255, 255, 0.92);
   font-size: 1rem;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
 }
 
 .dashboard-actions {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 22px;
+  align-items: stretch;
 }
 
 .action-card {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 190px;
   padding: 28px;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
@@ -57,7 +78,10 @@
   color: inherit;
   position: relative;
   overflow: hidden;
-  transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease),
+  box-sizing: border-box;
+  transition:
+    transform var(--t) var(--ease),
+    box-shadow var(--t) var(--ease),
     border-color var(--t) var(--ease);
   animation: fadeUp 0.5s var(--ease) both;
 }
@@ -71,16 +95,20 @@
   transition: opacity var(--t) var(--ease);
   pointer-events: none;
 }
+
 .action-card::after {
-  content: "â†’";
+  content: "→";
   position: absolute;
-  bottom: 18px; right: 22px;
+  bottom: 18px;
+  right: 22px;
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--brand-500);
   opacity: 0;
   transform: translateX(-6px);
-  transition: opacity var(--t) var(--ease), transform var(--t) var(--ease);
+  transition:
+    opacity var(--t) var(--ease),
+    transform var(--t) var(--ease);
 }
 
 .action-card:hover {
@@ -88,6 +116,7 @@
   box-shadow: var(--shadow-xl);
   border-color: var(--brand-200);
 }
+
 .action-card:hover::after {
   opacity: 1;
   transform: translateX(0);
@@ -96,6 +125,7 @@
 .card-icon {
   width: 56px;
   height: 56px;
+  flex: 0 0 56px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -103,21 +133,17 @@
   border-radius: var(--r-lg);
   background: var(--brand-50);
   margin-bottom: 16px;
-  transition: transform var(--t) var(--ease-bounce), background var(--t) var(--ease);
+  transition:
+    transform var(--t) var(--ease-bounce),
+    background var(--t) var(--ease);
 }
+
 [data-theme="dark"] .card-icon {
-  background: rgba(14, 165, 164, 0.15); /* Soft translucent teal box */
-  color: var(--brand-300); /* Bright glowing teal icon */
+  background: rgba(14, 165, 164, 0.15);
+  color: var(--brand-300);
 }
 
-/* Your existing hover effect stays exactly the same */
-.action-card:hover .card-icon {
-  transform: scale(1.08) rotate(-4deg);
-  background: var(--grad-primary);
-  color: #fff;
-  box-shadow: var(--shadow-glow);
-}
-
+/* Card icon hover effect */
 .action-card:hover .card-icon {
   transform: scale(1.08) rotate(-4deg);
   background: var(--grad-primary);
@@ -129,26 +155,151 @@
   font-size: 1.1rem;
   margin: 0 0 6px;
   color: var(--text-main);
+  line-height: 1.35;
+  overflow-wrap: anywhere;
 }
 
 .action-card p {
   margin: 0;
+  padding-right: 28px;
   font-size: 0.92rem;
   color: var(--text-muted);
   line-height: 1.55;
+  overflow-wrap: anywhere;
 }
 
 /* Stagger animations */
-.dashboard-actions .action-card:nth-child(1) { animation-delay: 0.05s; }
-.dashboard-actions .action-card:nth-child(2) { animation-delay: 0.1s; }
-.dashboard-actions .action-card:nth-child(3) { animation-delay: 0.15s; }
-.dashboard-actions .action-card:nth-child(4) { animation-delay: 0.2s; }
-.dashboard-actions .action-card:nth-child(5) { animation-delay: 0.25s; }
-.dashboard-actions .action-card:nth-child(6) { animation-delay: 0.3s; }
+.dashboard-actions .action-card:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.dashboard-actions .action-card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.dashboard-actions .action-card:nth-child(3) {
+  animation-delay: 0.15s;
+}
+
+.dashboard-actions .action-card:nth-child(4) {
+  animation-delay: 0.2s;
+}
+
+.dashboard-actions .action-card:nth-child(5) {
+  animation-delay: 0.25s;
+}
+
+.dashboard-actions .action-card:nth-child(6) {
+  animation-delay: 0.3s;
+}
+
+/* ============ Tablet ============ */
+
+@media (max-width: 900px) {
+  .dashboard {
+    padding: 44px 20px 64px;
+  }
+
+  .dashboard-header {
+    margin-bottom: 30px;
+    padding: 28px 30px;
+  }
+
+  .dashboard-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .action-card {
+    padding: 24px;
+  }
+}
+
+/* ============ Mobile ============ */
 
 @media (max-width: 640px) {
-  .dashboard { padding: 32px 16px 56px; }
-  .dashboard-header { padding: 26px 22px; border-radius: var(--r-xl); }
+  .dashboard {
+    padding: 32px 16px 56px;
+  }
+
+  .dashboard-header {
+    margin-bottom: 24px;
+    padding: 24px 20px;
+    border-radius: var(--r-xl);
+  }
+
+  .dashboard-header h2 {
+    font-size: 1.55rem;
+  }
+
+  .dashboard-header p {
+    font-size: 0.92rem;
+  }
+
+  .dashboard-actions {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .action-card {
+    min-height: 0;
+    padding: 22px;
+    border-radius: var(--r-xl);
+  }
+
+  .card-icon {
+    width: 52px;
+    height: 52px;
+    flex-basis: 52px;
+    margin-bottom: 14px;
+  }
+
+  .action-card h3 {
+    font-size: 1.05rem;
+  }
+
+  .action-card p {
+    font-size: 0.9rem;
+    padding-right: 24px;
+  }
+
+  .action-card::after {
+    bottom: 17px;
+    right: 18px;
+  }
+
+  .action-card:hover {
+    transform: translateY(-4px);
+  }
+}
+
+/* ============ Very Small Screens ============ */
+
+@media (max-width: 380px) {
+  .dashboard {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .dashboard-header {
+    padding: 22px 18px;
+  }
+
+  .dashboard-header h2 {
+    font-size: 1.4rem;
+  }
+
+  .dashboard-header p {
+    font-size: 0.88rem;
+  }
+
+  .action-card {
+    padding: 20px;
+  }
+
+  .action-card p {
+    padding-right: 20px;
+  }
 }
 
 /* ============ Heartbeat Animation ============ */
@@ -160,10 +311,27 @@
 }
 
 @keyframes heartbeat {
-  0% { transform: scale(1); }
-  10% { transform: scale(1.15); }
-  20% { transform: scale(1); }
-  30% { transform: scale(1.15); }
-  50% { transform: scale(1); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+
+  10% {
+    transform: scale(1.15);
+  }
+
+  20% {
+    transform: scale(1);
+  }
+
+  30% {
+    transform: scale(1.15);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
