@@ -8,9 +8,6 @@ function Dashboard() {
 
   if (!token) return null;
 
-  // Optional: decode user name later from token
-  const userName = "User";
-
   return (
     <div className="dashboard">
       <div className="dashboard-header">

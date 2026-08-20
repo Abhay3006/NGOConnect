@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import API from "../services/api";
 import "../styles/Complaints.css";
 
@@ -17,13 +16,6 @@ function ViewComplaints() {
     } catch (err) {
       console.error(err);
     }
-  };
-
-  const getStatusClass = (status) => {
-    if (status === "Pending") return "badge pending";
-    if (status === "Resolved") return "badge resolved";
-    if (status === "In Progress") return "badge progress";
-    return "badge";
   };
 
 const handleDelete = async (id) => {

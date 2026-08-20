@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../styles/Navbar.css";
 import logo from "../assets/logo-1.png";
 
 function Navbar() {
   const token = localStorage.getItem("token");
-  const navigate = useNavigate();
 
   // Initialize theme state from local storage or default to light
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");

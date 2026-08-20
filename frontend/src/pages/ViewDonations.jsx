@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import API from "../services/api";
 import "../styles/Donations.css";
 
@@ -17,14 +16,6 @@ function ViewDonations() {
     } catch (err) {
       console.error(err);
     }
-  };
-
-  const getStatusClass = (status) => {
-    if (status === "Pending") return "badge pending";
-    if (status === "Approved") return "badge approved";
-    if (status === "Completed") return "badge completed";
-    if (status === "Rejected") return "badge rejected";
-    return "badge";
   };
 
   const updateStatus = async (id, newStatus) => {

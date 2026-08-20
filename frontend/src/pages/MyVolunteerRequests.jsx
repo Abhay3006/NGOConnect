@@ -18,16 +18,6 @@ function MyVolunteerRequests() {
     }
   };
 
-  const getStatusClass = (status) => {
-    switch (status) {
-      case "Pending": return "badge pending";
-      case "Approved": return "badge approved";
-      case "Rejected": return "badge rejected";
-      case "Contacted": return "badge contacted";
-      default: return "badge";
-    }
-  };
-
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString('en-IN', {
       year: 'numeric',

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import API from "../services/api";
 import PopupModal from "../components/PopupModal"; // ✅ Import custom modal
 import "../styles/Auth.css";
@@ -11,8 +11,6 @@ function Login() {
 
   // ✅ Modal State
   const [modal, setModal] = useState({ isOpen: false, type: "", title: "", message: "", redirect: false });
-
-  const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
