@@ -1,0 +1,143 @@
+/* ============ Footer Styles ============ */
+
+.footer {
+  width: 100%;
+  background: #10182F; /* Deep dark blue */
+  margin-top: auto; /* Ensures footer stays at the very bottom of the page */
+  padding: 60px 0 20px;
+}
+
+.footer-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 3.5rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.footer-col h4 {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.footer-col .links {
+  padding: 0;
+  margin-top: 20px;
+}
+
+.footer-col .links li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.footer-col .links li a {
+  text-decoration: none;
+  color: #bfbfbf;
+  transition: color 0.3s ease;
+}
+
+.footer-col .links li a:hover {
+  color: #fff;
+}
+
+.footer-col p {
+  margin: 20px 0;
+  color: #bfbfbf;
+  max-width: 300px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.footer-col form {
+  display: flex;
+  gap: 5px;
+}
+
+.footer-col input {
+  height: 40px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05); /* Slight transparency looks better than none */
+  width: 100%;
+  outline: none;
+  border: 1px solid #7489C6;
+  color: #fff;
+  padding-left: 10px;
+  font-size: 0.9rem;
+}
+
+.footer-col input::placeholder {
+  color: #ccc;
+}
+
+.footer-col form button {
+  background: #fff;
+  color: #10182F;
+  outline: none;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.footer-col form button:hover {
+  background: #cecccc;
+}
+
+.footer-col .icons {
+  display: flex;
+  margin-top: 30px;
+  gap: 20px;
+}
+
+.footer-col .icons svg {
+  color: #afb6c7;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-col .icons svg:hover {
+  color: #fff;
+  transform: scale(1.1); /* Adds a slight pop effect on hover */
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Subtle divider line */
+  color: #bfbfbf;
+  font-size: 0.9rem;
+}
+
+/* ============ Mobile Responsiveness ============ */
+@media (max-width: 768px) {
+  .footer {
+    padding-top: 40px;
+  }
+
+  .footer-row {
+    padding: 0 24px;
+    gap: 2rem;
+    flex-direction: column;
+  }
+
+  .footer-col form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer-col form input,
+  .footer-col form button {
+    width: 100%;
+  }
+
+  .footer-col form button {
+    margin-top: 5px;
+  }
+}

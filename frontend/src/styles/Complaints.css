@@ -1,0 +1,262 @@
+/* ============ Complaints — forms + cards ============ */
+
+.form-container {
+  width: 100%;
+  min-height: calc(100vh - 70px);
+  padding: 56px 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: var(--grad-hero);
+  position: relative;
+  overflow: hidden;
+}
+
+.form-container::before {
+  content: "";
+  position: absolute;
+  width: 500px; height: 500px;
+  top: -150px; right: -150px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(14,165,164,0.35), transparent 60%);
+  filter: blur(80px);
+  pointer-events: none;
+  animation: float 10s ease-in-out infinite;
+}
+
+.form-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 640px;
+  padding: 40px 38px;
+  background: var(--bg-card);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border: 1px solid var(--border-color);
+  border-radius: var(--r-2xl);
+  box-shadow: var(--shadow-xl);
+  animation: scaleIn 0.45s var(--ease) both;
+}
+
+.form-card h2 {
+  font-size: 1.7rem;
+  margin: 0 0 6px;
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.form-card > p {
+  margin: 0 0 24px;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.form-card input,
+.form-card textarea,
+.form-card select {
+  margin-bottom: 14px;
+  background: var(--bg-main);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+}
+
+/* file upload */
+.file-upload-section {
+  margin-bottom: 18px;
+  padding: 18px;
+  background: var(--bg-main);
+  border: 1.5px dashed var(--brand-300);
+  border-radius: var(--r-lg);
+  text-align: center;
+  transition: background var(--t) var(--ease), border-color var(--t) var(--ease);
+}
+.file-upload-section:hover {
+  border-color: var(--brand-500);
+}
+.file-label {
+  display: inline-block;
+  padding: 10px 18px;
+  background: var(--brand-50);
+  color: var(--brand-700);
+  font-weight: 600;
+  font-size: 0.92rem;
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  transition: background var(--t) var(--ease), transform var(--t) var(--ease);
+}
+.file-label:hover {
+  background: var(--brand-100);
+  transform: translateY(-1px);
+}
+.file-input {
+  display: none;
+}
+.image-preview {
+  margin-top: 14px;
+  position: relative;
+  display: inline-block;
+}
+.image-preview img {
+  max-width: 100%;
+  max-height: 240px;
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-md);
+}
+.image-preview .remove-btn {
+  position: absolute;
+  top: 8px; right: 8px;
+  background: rgba(0,0,0,0.65);
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: var(--r-pill);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--t) var(--ease);
+}
+.image-preview .remove-btn:hover { background: rgba(220, 38, 38, 0.85); }
+
+/* ─── Complaints listing pages ─── */
+.complaints-page,
+.donations-page,
+.volunteer-requests-page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 24px 72px;
+  animation: fadeIn 0.4s var(--ease);
+}
+
+.complaint-grid,
+.donation-grid,
+.requests-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 22px;
+  margin-top: 24px;
+}
+
+.complaint-card,
+.donation-card,
+.request-card {
+  position: relative;
+  padding: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease),
+    border-color var(--t) var(--ease);
+  animation: fadeUp 0.5s var(--ease) both;
+}
+.complaint-card:hover,
+.donation-card:hover,
+.request-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--brand-200);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 6px;
+}
+.card-header h3 {
+  flex: 1;
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--text-main);
+  min-width: 180px;
+}
+
+.status-dropdown {
+  width: auto;
+  min-width: 130px;
+  padding: 7px 32px 7px 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: var(--r-pill);
+  border: 1.5px solid var(--border-color);
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  background-position: right 12px center;
+  cursor: pointer;
+  margin: 0;
+}
+.status-dropdown:hover { border-color: var(--brand-400); }
+
+.complaint-card p,
+.donation-card p,
+.request-card p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+.complaint-card .description,
+.donation-card .description {
+  padding: 10px 12px;
+  background: var(--bg-main);
+  border-radius: var(--r-md);
+  color: var(--text-main);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.image-display {
+  margin-top: 6px;
+}
+.image-display strong {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.complaint-image {
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--t) var(--ease);
+}
+.complaint-image:hover { transform: scale(1.02); }
+
+.delete-btn {
+  margin-top: 8px;
+  padding: 9px 16px;
+  background: linear-gradient(135deg, #fef2f2, #fee2e2);
+  color: #b91c1c;
+  border: 1.5px solid #fecaca;
+  border-radius: var(--r-pill);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: all var(--t) var(--ease);
+}
+.delete-btn:hover {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #fff;
+  border-color: transparent;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-glow-warm);
+}
+
+@media (max-width: 600px) {
+  .form-card { padding: 30px 22px; border-radius: var(--r-xl); }
+  .complaint-grid,
+  .donation-grid,
+  .requests-grid { grid-template-columns: 1fr; }
+}

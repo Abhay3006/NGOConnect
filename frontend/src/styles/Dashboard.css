@@ -1,0 +1,169 @@
+/* ============ Dashboard â€” action cards grid ============ */
+
+.dashboard {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 56px 24px 72px;
+  animation: fadeIn 0.5s var(--ease);
+}
+
+.dashboard-header {
+  margin-bottom: 40px;
+  padding: 32px 36px;
+  background: var(--grad-primary);
+  border-radius: var(--r-2xl);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  animation: fadeUp 0.5s var(--ease);
+}
+.dashboard-header::before {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(600px 300px at 10% 20%, rgba(255,255,255,0.18), transparent 60%),
+    radial-gradient(600px 300px at 90% 80%, rgba(255,255,255,0.12), transparent 60%);
+  pointer-events: none;
+}
+.dashboard-header h2 {
+  position: relative;
+  color: #fff;
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  margin: 0 0 6px;
+}
+.dashboard-header p {
+  position: relative;
+  margin: 0;
+  color: rgba(255,255,255,0.92);
+  font-size: 1rem;
+}
+
+.dashboard-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+.action-card {
+  display: block;
+  padding: 28px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease),
+    border-color var(--t) var(--ease);
+  animation: fadeUp 0.5s var(--ease) both;
+}
+
+.action-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--grad-primary);
+  opacity: 0;
+  transition: opacity var(--t) var(--ease);
+  pointer-events: none;
+}
+.action-card::after {
+  content: "â†’";
+  position: absolute;
+  bottom: 18px; right: 22px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--brand-500);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity var(--t) var(--ease), transform var(--t) var(--ease);
+}
+
+.action-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--brand-200);
+}
+.action-card:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.card-icon {
+  width: 56px;
+  height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7rem;
+  border-radius: var(--r-lg);
+  background: var(--brand-50);
+  margin-bottom: 16px;
+  transition: transform var(--t) var(--ease-bounce), background var(--t) var(--ease);
+}
+[data-theme="dark"] .card-icon {
+  background: rgba(14, 165, 164, 0.15); /* Soft translucent teal box */
+  color: var(--brand-300); /* Bright glowing teal icon */
+}
+
+/* Your existing hover effect stays exactly the same */
+.action-card:hover .card-icon {
+  transform: scale(1.08) rotate(-4deg);
+  background: var(--grad-primary);
+  color: #fff;
+  box-shadow: var(--shadow-glow);
+}
+
+.action-card:hover .card-icon {
+  transform: scale(1.08) rotate(-4deg);
+  background: var(--grad-primary);
+  color: #fff;
+  box-shadow: var(--shadow-glow);
+}
+
+.action-card h3 {
+  font-size: 1.1rem;
+  margin: 0 0 6px;
+  color: var(--text-main);
+}
+
+.action-card p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* Stagger animations */
+.dashboard-actions .action-card:nth-child(1) { animation-delay: 0.05s; }
+.dashboard-actions .action-card:nth-child(2) { animation-delay: 0.1s; }
+.dashboard-actions .action-card:nth-child(3) { animation-delay: 0.15s; }
+.dashboard-actions .action-card:nth-child(4) { animation-delay: 0.2s; }
+.dashboard-actions .action-card:nth-child(5) { animation-delay: 0.25s; }
+.dashboard-actions .action-card:nth-child(6) { animation-delay: 0.3s; }
+
+@media (max-width: 640px) {
+  .dashboard { padding: 32px 16px 56px; }
+  .dashboard-header { padding: 26px 22px; border-radius: var(--r-xl); }
+}
+
+/* ============ Heartbeat Animation ============ */
+
+.heartbeat-icon {
+  display: inline-block;
+  filter: drop-shadow(0 2px 8px rgba(255, 255, 255, 0.3));
+  animation: heartbeat 2.5s infinite ease-in-out;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  10% { transform: scale(1.15); }
+  20% { transform: scale(1); }
+  30% { transform: scale(1.15); }
+  50% { transform: scale(1); }
+  100% { transform: scale(1); }
+}

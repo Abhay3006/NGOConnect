@@ -1,0 +1,34 @@
+/* ============ Donations — uses shared form/card system ============ */
+/* Most layout is shared with Complaints.css. This file scopes
+   donation-specific accents (amount highlight, donor info, etc). */
+
+.donation-card .amount {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+  border-radius: var(--r-pill);
+  font-weight: 700;
+  font-size: 0.92rem;
+  align-self: flex-start;
+}
+.donation-card .amount strong { font-weight: 700; color: #047857; }
+
+.donation-card .donor {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  padding: 8px 12px;
+  background: var(--bg-main);
+  border-radius: var(--r-md);
+}
+
+.donation-card .location,
+.donation-card .contact,
+.complaint-card .location,
+.complaint-card .contact {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}

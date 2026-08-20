@@ -1,0 +1,155 @@
+/* ============ Theme Variables for Navbar ============ */
+:root {
+  --nav-bg: rgba(255, 255, 255, 0.78);
+  --nav-border: rgba(227, 233, 240, 0.7);
+  --nav-text: var(--text, #111827);
+  --nav-text-muted: var(--text-muted, #6b7280);
+}
+
+/* When dark mode is active, switch these colors! */
+[data-theme="dark"] {
+  --nav-bg: rgba(15, 23, 42, 0.85); /* Dark translucent navy */
+  --nav-border: rgba(255, 255, 255, 0.1);
+  --nav-text: #f8fafc; /* White text */
+  --nav-text-muted: #94a3b8; /* Light gray text */
+  --border-soft: #334155;
+}
+
+/* ============ Navbar Styles ============ */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--nav-bg); /* Now uses the dynamic variable */
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid var(--nav-border);
+  transition: box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+
+.navbar:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Plus Jakarta Sans", "Inter", sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--nav-text);
+  text-decoration: none;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo-img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
+.logo .logo-text {
+  background: var(--grad-primary, linear-gradient(90deg, #2563eb, #3b82f6));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.logo:hover {
+  transform: translateY(-1px);
+  filter: drop-shadow(0 4px 10px rgba(14, 165, 164, 0.25));
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-link {
+  position: relative;
+  padding: 8px 14px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--nav-text-muted);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: color 0.3s ease, background 0.3s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 4px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--grad-primary, #2563eb);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--nav-text);
+  background: rgba(37, 99, 235, 0.08); /* Replaced var(--brand-50) for safety */
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+.navbar .btn {
+  padding: 10px 18px;
+  font-size: 0.9rem;
+}
+
+/* ============ Toggle Button Styles ============ */
+
+.theme-toggle-btn {
+  background: transparent;
+  border: 1.5px solid var(--border-soft, #cbd5e1);
+  color: var(--nav-text); /* Adopts the dynamic text color */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  margin-left: 12px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle-btn:hover {
+  border-color: #3b82f6;
+  background-color: rgba(0, 0, 0, 0.04);
+  transform: scale(1.05);
+}
+
+[data-theme="dark"] .theme-toggle-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 640px) {
+  .navbar-container { padding: 12px 16px; }
+  .logo { font-size: 1.15rem; }
+  .nav-link { padding: 6px 10px; font-size: 0.88rem; }
+  .navbar .btn { padding: 8px 14px; font-size: 0.85rem; }
+}
