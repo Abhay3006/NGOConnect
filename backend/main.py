@@ -45,7 +45,14 @@ from app.utils.security import hash_password
 
 def create_default_admin():
     db = SessionLocal()
-    admin_email = "admin@ngoconnect.com"
+
+    admin_email = os.getenv("ADMIN_EMAIL")
+    admin_password = os.getenv("ADMIN_PASSWORD")
+
+    if not admin_email or not admin_password:
+        print("Admin credentials not configured. Skipping default admin creation.")
+        db.close()
+        return
 
     existing_admin = db.query(User).filter(User.email == admin_email).first()
 
@@ -53,14 +60,14 @@ def create_default_admin():
         admin_user = User(
             name="Admin",
             email=admin_email,
-            password=hash_password("admin123"),
+            password=hash_password(admin_password),
             role="admin"
         )
         db.add(admin_user)
         db.commit()
-        print("✅ Default admin created.")
+        print("Default admin created.")
     else:
-        print("ℹ️ Admin already exists.")
+        print("Admin already exists.")
 
     db.close()
 
